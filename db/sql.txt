@@ -1,0 +1,15 @@
+CREATE TABLE `student` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `address` varchar(255) DEFAULT NULL,
+  `age` int(11) DEFAULT NULL,
+  `name` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+CREATE TABLE `course` (
+  `id` bigint(20) NOT NULL,
+  `stu_id` bigint(20) DEFAULT NULL COMMENT '学生id',
+  `name` varchar(255) DEFAULT NULL COMMENT '课程名称',
+  `score` double(5,2) DEFAULT NULL COMMENT '分数',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
