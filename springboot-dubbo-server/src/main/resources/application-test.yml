@@ -1,0 +1,48 @@
+server:
+  port: 8080
+dubbo:
+  application:
+    name: mydubboservice
+    id: mydubboservice
+  ## ProtocolConfig
+  protocol:
+    id: dubbo
+    name: dubbo
+    port: 20880
+    threads: 400
+  #这是你要发布到dubbo提供服务的接口所在包位置
+  scan:
+    base-packages: com.sl.service
+
+#多注册中心
+#  registries:
+#    registry1:
+#      address: zookeeper://127.0.0.1:2181
+#    registry2:
+#      address: zookeeper://127.0.0.1:2182
+#      default: true
+
+#  单个注册中心
+  registry:
+    address: zookeeper://127.0.0.1:2180
+  provider:
+    validation: true
+#    filter: dubboLogFilter
+# mysql 的数据库配置
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+#热部署
+devtools:
+  restart:
+    enabled: true #热部署生效
+    #设置重启的目录
+    additional-paths: src/main/java
+    exclude: WEB-INF/** #classpath目录下的WEB-INF文件夹内容修改不重启
+
+#mybatis:
+#  mapper-locations: classpath*:mybatis/*Mapper.xml
+#  type-aliases-package: com.demo.entity

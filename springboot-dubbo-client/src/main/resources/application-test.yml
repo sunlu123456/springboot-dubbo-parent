@@ -1,0 +1,50 @@
+server:
+  port: 8082
+#  context-path: /spring-boot-demo # 访问地址：http://localhost:8081/spring-boot-demo/hi
+#  tomcat:
+#    uri-encoding: UTF-8
+#  session:
+#    timeout
+
+dubbo:
+  application:
+    name: mydubboconsumer
+    id: mydubboconsumer
+  ## ProtocolConfig
+  protocol:
+    id: dubbo
+    name: dubbo
+    port: 20880
+  #消费方 调用 服务方 @Reference注入 所在包位置
+  scan:
+    base-packages: com.sl.service
+
+
+  #多注册中心
+#  registries:
+#    registry1:
+#      address: zookeeper://127.0.0.1:2181
+#    registry2:
+#      address: zookeeper://127.0.0.1:2182
+#      default: true
+  #  单个注册中心
+  registry:
+    address: zookeeper://127.0.0.1:2180
+  consumer:
+    validation: true
+    retries: 0
+#    filter: dubboLogFilter
+
+#热部署
+devtools:
+  restart:
+    enabled: true #热部署生效
+    #设置重启的目录
+    additional-paths: src/main/java
+    exclude: WEB-INF/** #classpath目录下的WEB-INF文件夹内容修改不重启
+
+  # spring mvc 视图解析器
+  mvc:
+    view:
+      prefix: /WEB-INF/views # 页面默认前缀目录
+      suffix: .jsp # 响应页面默认后缀

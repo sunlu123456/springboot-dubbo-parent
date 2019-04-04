@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <!--<parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.5.19.RELEASE</version>
+        <relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;
+    </parent>-->
+
+    <groupId>com.sl</groupId>
+    <artifactId>springboot-dubbo-parent</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>springboot-dubbo-parent</name>
+    <description>Demo project for Spring Boot</description>
+
+    <modules>
+        <module>springboot-dubbo-api</module>
+        <module>springboot-dubbo-server</module>
+        <module>springboot-dubbo-client</module>
+        <module>springboot-dubbo-common</module>
+        <module>springboot-dubbo-pojo</module>
+        <module>springboot-dubbo-business</module>
+        <module>springboot-dubbo-dao</module>
+    </modules>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <!-- 在properties中统一控制依赖包的版本，更清晰-->
+        <spring-boot.version>2.1.1.RELEASE</spring-boot.version>
+        <dubbo.version>2.6.5</dubbo.version>
+        <spring-context-support.version>1.0.2</spring-context-support.version>
+        <!--Zookeeper客户端Curator-->
+        <!--注意：ZooKeeper 3.5.x 版本对应Curator 4.X 版本，ZK服务器也是用3.5.X版本-->
+        <!--<curator.version>4.1.0</curator.version>-->
+        <!--curator的版本：2.12.0，对应Zookeeper的版本为：3.4.x-->
+        <curator.version>2.12.0</curator.version>
+        <fastjson.version>1.2.54</fastjson.version>
+        <mysql.version>8.0.13</mysql.version>
+        <mybatis.version>1.3.2</mybatis.version>
+        <druid.version>1.1.10</druid.version>
+        <pagehelper.version>1.2.10</pagehelper.version>
+        <lombok.version>1.18.4</lombok.version>
+        <commons.lang3.version>3.6</commons.lang3.version>
+        <commons.io.version>2.5</commons.io.version>
+        <oval.version>1.86</oval.version>
+    </properties>
+    <!--dependencyManagement用于管理依赖版本号-->
+    <dependencyManagement>
+        <dependencies>
+            <!-- Spring Boot -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- Dubbo  -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>dubbo</artifactId>
+                <version>${dubbo.version}</version>
+            </dependency>
+            <!--spring-context-support-->
+            <dependency>
+                <groupId>com.alibaba.spring</groupId>
+                <artifactId>spring-context-support</artifactId>
+                <version>${spring-context-support.version}</version>
+            </dependency>
+            <!--curator-->
+            <dependency>
+                <groupId>org.apache.curator</groupId>
+                <artifactId>curator-framework</artifactId>
+                <version>${curator.version}</version>
+            </dependency>
+            <!--fastjson-->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
+            <!--jpa-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-jpa</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
+            <!--mysql-->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.version}</version>
+            </dependency>
+            <!--jdbc-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-jdbc</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
+
+            <!-- mybatis -->
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>${mybatis.version}</version>
+            </dependency>
+
+            <!-- druid连接池 -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+            <!--<dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>${druid.version}</version>
+            </dependency>-->
+
+            <!--pageHelper分页插件-->
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper-spring-boot-starter</artifactId>
+                <version>${pagehelper.version}</version>
+            </dependency>
+            <!--lombok-->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <!--Apache工具组件-->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons.lang3.version}</version>
+            </dependency>
+            <!--commons-io-->
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons.io.version}</version>
+            </dependency>
+            <!--oval 参数校验-->
+            <dependency>
+                <groupId>net.sf.oval</groupId>
+                <artifactId>oval</artifactId>
+                <version>${oval.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring-boot.version}</version>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
