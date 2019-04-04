@@ -85,7 +85,7 @@ devtools:
     exclude: WEB-INF/** #classpath目录下的WEB-INF文件夹内容修改不重启
 
 mybatis:
-  mapper-locations: classpath*:mybatis/*Mapper.xml
+  mapper-locations: classpath*:mybatis/mapping/*Mapper.xml
   type-aliases-package: com.sl.pojo.mybatis
 
 #pagehelper
